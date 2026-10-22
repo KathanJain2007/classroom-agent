@@ -1,0 +1,54 @@
+{
+  "source_documents": [
+    "DS-UNIT-1.pdf"
+  ],
+  "total_marks": 15,
+  "questions": [
+    {
+      "id": "q1",
+      "concept": "Stack (LIFO) ADT",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 2,
+      "question_text": "A stack follows which of the following principles for element access?",
+      "options": [
+        "First-In First-Out (FIFO)",
+        "Last-In First-Out (LIFO)",
+        "Random access based on index",
+        "Priority-based access"
+      ],
+      "correct_option_index": 1,
+      "explanation": "A stack is a LIFO structure: the last element pushed onto the top is always the first to be popped off. This is the defining property that distinguishes a stack from a queue (FIFO) or an array (random access)."
+    },
+    {
+      "id": "q2",
+      "concept": "Dynamic Memory Allocation",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "CODE",
+      "difficulty": "MEDIUM",
+      "marks": 5,
+      "question_text": "The following C program is supposed to allocate an array of 5 integers on the heap, store the values 1–5, print them, and then free the memory. Identify and fix the bug.",
+      "language": "C",
+      "code_snippet": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *arr = malloc(5);   /* BUG is on this line */\n    for (int i = 0; i < 5; i++) {\n        arr[i] = i + 1;\n    }\n    for (int i = 0; i < 5; i++) {\n        printf(\"%d \", arr[i]);\n    }\n    free(arr);\n    return 0;\n}",
+      "expected_answer": "Fix: change  malloc(5)  to  malloc(5 * sizeof(int)).\n\nReason: malloc takes the number of BYTES to allocate.  Passing 5 allocates only 5 bytes, which is not enough for 5 integers (each typically 4 bytes on a 32/64-bit system).  The correct call is malloc(5 * sizeof(int)), which allocates exactly the required 20 bytes and avoids writing beyond the allocated region (undefined behaviour).",
+      "explanation": "malloc's argument is always a byte count, not an element count.  Using sizeof(int) makes the code portable across platforms where int may be 2 or 4 bytes."
+    },
+    {
+      "id": "q3",
+      "concept": "Abstract Data Type (ADT)",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "THEORY",
+      "difficulty": "HARD",
+      "marks": 8,
+      "question_text": "Explain what an Abstract Data Type (ADT) is, how it differs from a concrete data structure, and why this separation is important in software design. Use the Stack ADT as an example in your answer.",
+      "model_answer": "An Abstract Data Type (ADT) is a mathematical model for a class of data types defined by the set of values it can hold and the operations that can be performed on those values, without specifying how those operations are implemented internally.\n\nFor example, the Stack ADT is defined by the operations push(element), pop(), top(), isEmpty(), and isFull(), and by the LIFO ordering rule.  The ADT says nothing about whether the stack is backed by an array or a linked list — those are implementation details.\n\nA concrete data structure is the actual implementation: an array-based stack allocates a fixed-size block of memory and uses an integer index to track the top, while a linked-list-based stack chains nodes together dynamically.\n\nThe separation matters for three reasons:\n1. Encapsulation — users of the ADT interact only through its defined operations, so internal changes do not break calling code.\n2. Interchangeability — any correct implementation of the Stack ADT can be swapped in without affecting the rest of the program.\n3. Reasoning — we can prove properties of algorithms (e.g. expression evaluation) at the ADT level without worrying about memory layout or pointer arithmetic.",
+      "key_points": [
+        "Correctly defines ADT as a logical model specifying values and operations, independent of implementation.",
+        "Clearly distinguishes ADT (what) from data structure (how), with the Stack as a concrete example.",
+        "Mentions at least two benefits of the separation (e.g. encapsulation, interchangeability, abstraction, portability).",
+        "Gives at least two Stack ADT operations by name (push, pop, top, isEmpty, isFull)."
+      ]
+    }
+  ]
+}

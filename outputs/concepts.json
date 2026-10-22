@@ -1,0 +1,226 @@
+{
+  "concepts": [
+    {
+      "name": "Abstract Data Type (ADT) vs. Data Structure",
+      "explanation": "An ADT specifies the logical behavior of a data type (its operations and properties) without prescribing how it is implemented, while a data structure provides the concrete physical representation that realizes the ADT.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 1,
+          "block_end": 48
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Stack Abstract Data Type (LIFO) and Core Operations",
+      "explanation": "A stack is a LIFO (last‑in‑first‑out) ADT that supports push (insert at top), pop (remove from top), top/peek (inspect the top element), and status checks such as isEmpty and isFull.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 1,
+          "block_end": 48
+        }
+      ],
+      "subtopics": [
+        "Stack Implementation Techniques"
+      ]
+    },
+    {
+      "name": "Dynamic Memory Allocation in C",
+      "explanation": "C provides malloc, calloc, realloc, and free to allocate, resize, and deallocate memory at runtime, enabling data structures such as arrays and linked lists to grow or shrink as needed.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 1,
+          "block_end": 48
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Infix‑to‑Postfix Conversion Using a Stack",
+      "explanation": "The algorithm scans an infix expression, pushes operators onto a stack while respecting precedence and parentheses, and outputs operands directly, producing an equivalent postfix (Reverse Polish) expression.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 1,
+          "block_end": 48
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Postfix Expression Evaluation",
+      "explanation": "Postfix expressions are evaluated by scanning left to right, pushing operands onto a stack, and applying operators to the topmost operands, which yields the final result without needing precedence rules.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 1,
+          "block_end": 48
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Recursion and Types of Recursive Functions",
+      "explanation": "Recursion occurs when a function calls itself directly or indirectly; common forms include direct, indirect, tail, and head recursion, and it is useful for problems like factorial, Fibonacci, tree traversals, and graph DFS.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 1,
+          "block_end": 48
+        },
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 44,
+          "block_end": 56
+        }
+      ],
+      "subtopics": [
+        "Recursion",
+        "Types of Recursion",
+        "Recursive Call Stack",
+        "Recursive Factorial Algorithm",
+        "Recursive Fibonacci Algorithm",
+        "Indirect Recursion",
+        "Tail Recursion",
+        "Tower of Hanoi (Recursive Solution)"
+      ]
+    },
+    {
+      "name": "Fundamental Data Structure Operations",
+      "explanation": "Core operations applicable to most data structures include traversal, insertion, deletion, searching, sorting, and merging, each enabling manipulation and retrieval of stored data.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-1.pdf",
+          "block_start": 1,
+          "block_end": 48
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Queue Abstract Data Type (FIFO)",
+      "explanation": "A queue is a linear collection where elements are inserted at the rear (tail) and removed from the front (head), enforcing a First‑In‑First‑Out ordering that models real‑world waiting lines.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-2.pdf",
+          "block_start": 1,
+          "block_end": 37
+        },
+        {
+          "filename": "Double Ended Queue.docx",
+          "block_start": 1,
+          "block_end": 109
+        }
+      ],
+      "subtopics": [
+        "Queue Operations",
+        "Queue overflow and underflow detection",
+        "Use of sentinel values for empty condition"
+      ]
+    },
+    {
+      "name": "Array‑based Queue Implementation",
+      "explanation": "In an array implementation, a fixed‑size array stores the elements and two indices (front and rear) track where to dequeue and enqueue, providing O(1) time for basic operations but requiring careful handling of overflow.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-2.pdf",
+          "block_start": 1,
+          "block_end": 37
+        },
+        {
+          "filename": "Double Ended Queue.docx",
+          "block_start": 1,
+          "block_end": 109
+        }
+      ],
+      "subtopics": [
+        "Array‑based implementation of a queue",
+        "Front and rear index management",
+        "Linear (non‑circular) reset logic",
+        "Fixed‑size (static) data structure"
+      ]
+    },
+    {
+      "name": "Circular Queue",
+      "explanation": "A circular queue treats the underlying array as if its ends were connected, allowing the rear index to wrap around to the beginning when it reaches the array’s limit, which eliminates the need to shift elements and makes full utilization of the array space.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-2.pdf",
+          "block_start": 1,
+          "block_end": 37
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Linked‑list Queue Implementation",
+      "explanation": "Using a singly or doubly linked list, a queue maintains pointers to the front and rear nodes so that Enqueue and Dequeue can be performed in constant time without a fixed size limit.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-2.pdf",
+          "block_start": 1,
+          "block_end": 37
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Double‑ended Queue (Deque)",
+      "explanation": "A deque permits insertion and deletion at both the front and rear ends, supporting variants such as input‑restricted (insertion at one end only) and output‑restricted (deletion at one end only) while not adhering strictly to FIFO ordering.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-2.pdf",
+          "block_start": 1,
+          "block_end": 37
+        },
+        {
+          "filename": "Double Ended Queue.docx",
+          "block_start": 1,
+          "block_end": 109
+        }
+      ],
+      "subtopics": [
+        "Double-Ended Queue (Deque) ADT"
+      ]
+    },
+    {
+      "name": "Priority Queue",
+      "explanation": "A priority queue extends the basic queue by associating each element with a priority value; elements with higher priority are dequeued before lower‑priority ones, with min‑priority and max‑priority variants determining whether the smallest or largest priority is served first.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-2.pdf",
+          "block_start": 1,
+          "block_end": 37
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Applications of Queues in Computing",
+      "explanation": "Queues are employed in many system components such as printer spooling, keyboard input buffering, GUI event handling, network request handling, process scheduling, and simulation models that require orderly service of tasks.",
+      "sources": [
+        {
+          "filename": "DS-UNIT-2.pdf",
+          "block_start": 1,
+          "block_end": 37
+        }
+      ],
+      "subtopics": []
+    },
+    {
+      "name": "Modular function design for ADT operations",
+      "explanation": "Each deque operation (insert front/rear, delete front/rear, display, checks) is encapsulated in its own function, demonstrating separation of concerns and reusable code.",
+      "sources": [
+        {
+          "filename": "Double Ended Queue.docx",
+          "block_start": 1,
+          "block_end": 109
+        }
+      ],
+      "subtopics": []
+    }
+  ]
+}

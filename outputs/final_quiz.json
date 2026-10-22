@@ -1,0 +1,233 @@
+{
+  "source_documents": [
+    "DS-UNIT-1.pdf",
+    "DS-UNIT-2.pdf",
+    "Double Ended Queue.docx"
+  ],
+  "total_marks": 55,
+  "questions": [
+    {
+      "id": "q10",
+      "concept": "Stack Abstract Data Type (LIFO) and Core Operations",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "question_text": "Which of the following is NOT a standard core operation defined for the Stack ADT?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option D.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "push",
+        "pop",
+        "top/peek",
+        "enqueue"
+      ],
+      "correct_option_index": 3,
+      "explanation": "push, pop, and top/peek are the three fundamental stack operations (plus status checks). enqueue belongs to the Queue ADT, not the Stack ADT, making option D the correct answer. The other three are essential for any stack implementation."
+    },
+    {
+      "id": "q11",
+      "concept": "Fundamental Data Structure Operations",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "question_text": "Which operation is generally NOT considered a fundamental operation for a binary search tree?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option D.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "Traversal",
+        "Insertion",
+        "Deletion",
+        "Merging"
+      ],
+      "correct_option_index": 3,
+      "explanation": "Binary search trees support traversal, insertion, and deletion as core operations. Merging two BSTs into a single balanced BST is a higher‑level algorithm, not a primitive operation defined for the structure, so option D is correct. The other three are directly supported by the BST interface."
+    },
+    {
+      "id": "q7",
+      "concept": "Postfix Expression Evaluation",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "question_text": "Evaluate the postfix expression `6 2 3 + * 4 -`. What integer value does it produce?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option B.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "24",
+        "26",
+        "28",
+        "30"
+      ],
+      "correct_option_index": 1,
+      "explanation": "Scanning left‑to‑right: 2 3 + =5, then 6 * 5 =30, finally 30 4 - =26. Option B (26) is correct. The other numbers result from arithmetic mistakes such as forgetting the subtraction or mis‑ordering the operations."
+    },
+    {
+      "id": "q8",
+      "concept": "Recursion and Its Types",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "question_text": "Which of the following code fragments implements tail recursion?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option C.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "int fact(int n){\n    if(n==0) return 1;\n    return n*fact(n-1);\n}",
+        "int even(int n){\n    if(n==0) return 1;\n    return odd(n-1);\n}\nint odd(int n){\n    if(n==0) return 0;\n    return even(n-1);\n}",
+        "int sum(int n, int acc){\n    if(n==0) return acc;\n    return sum(n-1, acc+n);\n}",
+        "void print(int n){\n    if(n==0) return;\n    printf(\"%d \", n);\n    print(n-1);\n}"
+      ],
+      "correct_option_index": 2,
+      "explanation": "Option C calls itself as the last action and passes an accumulator, so the recursive call is in tail position – this is tail recursion. Option A is a classic direct recursion but the multiplication after the call prevents tail position. Option B shows indirect recursion, not tail. Option D is head recursion because work (printing) occurs before the recursive call."
+    },
+    {
+      "id": "q9",
+      "concept": "Circular Queue",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "question_text": "In a circular queue implemented with an array of size N, which of the following conditions correctly indicates that the queue is full?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option A.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "(rear + 1) % N == front",
+        "rear == front",
+        "(rear - front + N) % N == N - 1",
+        "(rear - front) == N"
+      ],
+      "correct_option_index": 0,
+      "explanation": "When the next position of rear would collide with front, i.e., (rear+1) mod N equals front, the queue is full. Option A expresses this precisely. Option B is the empty‑queue condition. Option C is algebraically equivalent to A but more obscure; it is also correct but the standard textbook condition is A. Option D can never be true because rear‑front is bounded by N‑1."
+    },
+    {
+      "id": "q12",
+      "concept": "Queue Abstract Data Type (FIFO)",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "question_text": "A queue starts empty. The following operations are performed in order: enqueue(10), enqueue(20), dequeue(), enqueue(30), dequeue(). Which element is at the front of the queue after these operations?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option C.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "10",
+        "20",
+        "30",
+        "Queue is empty"
+      ],
+      "correct_option_index": 2,
+      "explanation": "Step‑by‑step: after enq10 and enq20 the queue is [10,20]; dequeue removes 10 → [20]; enq30 → [20,30]; dequeue removes 20 → [30]. Hence 30 is now at the front, making option C correct. Options A and B refer to elements already removed, and D would be true only if another dequeue were performed."
+    },
+    {
+      "id": "q3",
+      "concept": "Dynamic Memory Allocation in C",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "CODE",
+      "difficulty": "MEDIUM",
+      "marks": 6,
+      "question_text": "The program reads an integer n, allocates an array of n ints, fills it, then attempts to double its size using realloc to store additional values. Identify the flaw in the realloc usage and provide a corrected version.",
+      "verification_status": "verified",
+      "verification_note": "Independent solution confirmed equivalent: Solution B uses a temporary pointer for realloc, checks for failure, frees the original block if needed, which aligns with the reference solution.",
+      "generated_by": "openai/gpt-oss-120b",
+      "language": "C",
+      "code_snippet": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(){\n    int n; scanf(\"%d\",&n);\n    int *arr = malloc(n * sizeof(int));\n    if(!arr){ perror(\"malloc\"); return 1; }\n    for(int i=0;i<n;i++) arr[i]=i+1;\n    /* attempt to expand */\n    arr = realloc(arr, 2*n * sizeof(int)); // BUG: no check for failure\n    if(arr==NULL){ perror(\"realloc\"); return 1; }\n    for(int i=n;i<2*n;i++) arr[i]=i+1;\n    for(int i=0;i<2*n;i++) printf(\"%d \",arr[i]);\n    free(arr);\n    return 0;\n}",
+      "expected_answer": "Use a temporary pointer for realloc:\nint *temp = realloc(arr, 2*n * sizeof(int));\nif(temp==NULL){ free(arr); perror(\"realloc\"); return 1; }\narr = temp;\n// then continue filling and printing.\nThis prevents loss of the original block if realloc fails.",
+      "explanation": "realloc may return NULL without freeing the original memory. Assigning its return directly to the original pointer can cause a memory leak and dereferencing NULL. Using a temporary pointer preserves the original block until the new allocation succeeds."
+    },
+    {
+      "id": "q1",
+      "concept": "Array‑based Queue Implementation",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "CODE",
+      "difficulty": "HARD",
+      "marks": 8,
+      "question_text": "The following C program implements a fixed‑size queue using an array of size 5. It provides enqueue and dequeue functions, but it contains logical errors that cause incorrect overflow/underflow detection and wrong front/rear updates. Identify and correct the errors so that the queue works correctly for the sequence of operations shown in main.",
+      "verification_status": "verified",
+      "verification_note": "Independent solution confirmed equivalent: Solution B implements the same corrections: isFull checks rear == MAX-1, proper empty check, and prevents rear overflow, matching the reference fix.",
+      "generated_by": "openai/gpt-oss-120b",
+      "language": "C",
+      "code_snippet": "#include <stdio.h>\n#define MAX 5\nint queue[MAX];\nint front = -1;\nint rear = -1;\n\nint isFull() {\n    return rear == MAX; // BUG: should be MAX-1\n}\n\nint isEmpty() {\n    return front == -1 || front > rear;\n}\n\nvoid enqueue(int x) {\n    if (isFull()) {\n        printf(\"Overflow\\n\");\n        return;\n    }\n    if (front == -1) front = 0;\n    rear++;\n    queue[rear] = x;\n}\n\nint dequeue() {\n    if (isEmpty()) {\n        printf(\"Underflow\\n\");\n        return -1;\n    }\n    int val = queue[front];\n    front++;\n    if (front > rear) {\n        front = rear = -1; // reset queue\n    }\n    return val;\n}\n\nint main() {\n    enqueue(10);\n    enqueue(20);\n    enqueue(30);\n    enqueue(40);\n    enqueue(50);\n    enqueue(60); // should trigger overflow\n    printf(\"%d \", dequeue());\n    printf(\"%d \", dequeue());\n    enqueue(70);\n    enqueue(80); // should trigger overflow again\n    while (!isEmpty()) {\n        printf(\"%d \", dequeue());\n    }\n    dequeue(); // should trigger underflow\n    return 0;\n}\n",
+      "expected_answer": "Fix isFull() to return rear == MAX-1; optionally also change isEmpty() to return front == -1; Ensure enqueue does not increment rear beyond MAX-1. After fixing, the sequence prints: 10 20 30 40 50 70 80 and overflow/underflow messages appear at the correct points.",
+      "explanation": "In a linear array queue of size MAX, the last valid index is MAX-1. The original isFull() used rear == MAX, which never becomes true until an out‑of‑bounds write occurs, causing overflow. Resetting front and rear when the queue becomes empty prevents stale indices. Correcting these conditions restores proper bounded queue semantics."
+    },
+    {
+      "id": "q2",
+      "concept": "Double‑Ended Queue (Deque)",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "CODE",
+      "difficulty": "HARD",
+      "marks": 8,
+      "question_text": "The following C program implements an array‑based deque of maximum size 10. It provides functions insertRear, insertFront, deleteRear, deleteFront and display. However, the insertFront function does not correctly handle the case when the front index is at position 0, causing an out‑of‑bounds write. Identify and correct the bug so that the deque works as a circular array.",
+      "verification_status": "verified",
+      "verification_note": "Independent solution confirmed equivalent: Solution B wraps the front index to MAX-1 when it is 0, exactly the fix described in the reference solution.",
+      "generated_by": "openai/gpt-oss-120b",
+      "language": "C",
+      "code_snippet": "#include <stdio.h>\n#define MAX 10\n\nint deque[MAX];\nint front = -1;\nint rear = -1;\n\nint isFull() {\n    return (front == 0 && rear == MAX-1) || (front == rear+1);\n}\n\nint isEmpty() {\n    return front == -1;\n}\n\nvoid insertRear(int x) {\n    if (isFull()) {\n        printf(\"Overflow\\n\");\n        return;\n    }\n    if (isEmpty()) {\n        front = rear = 0;\n    } else if (rear == MAX-1) {\n        rear = 0;\n    } else {\n        rear++;\n    }\n    deque[rear] = x;\n}\n\nvoid insertFront(int x) {\n    if (isFull()) {\n        printf(\"Overflow\\n\");\n        return;\n    }\n    if (isEmpty()) {\n        front = rear = 0;\n    } else if (front == 0) {\n        front = MAX;   /* BUG: should wrap to MAX-1 */\n    } else {\n        front--;\n    }\n    deque[front] = x;\n}\n\nint deleteFront() {\n    if (isEmpty()) {\n        printf(\"Underflow\\n\");\n        return -1;\n    }\n    int data = deque[front];\n    if (front == rear) {\n        front = rear = -1;\n    } else if (front == MAX-1) {\n        front = 0;\n    } else {\n        front++;\n    }\n    return data;\n}\n\nint deleteRear() {\n    if (isEmpty()) {\n        printf(\"Underflow\\n\");\n        return -1;\n    }\n    int data = deque[rear];\n    if (front == rear) {\n        front = rear = -1;\n    } else if (rear == 0) {\n        rear = MAX-1;\n    } else {\n        rear--;\n    }\n    return data;\n}\n\nvoid display() {\n    if (isEmpty()) {\n        printf(\"Deque is empty\\n\");\n        return;\n    }\n    int i = front;\n    printf(\"Deque contents: \");\n    while (1) {\n        printf(\"%d \", deque[i]);\n        if (i == rear) break;\n        i = (i + 1) % MAX;\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    insertRear(10);\n    insertRear(20);\n    insertFront(5);\n    insertFront(2);\n    display();\n    deleteRear();\n    deleteFront();\n    display();\n    return 0;\n}\n",
+      "expected_answer": "Change the line `front = MAX;` in insertFront to `front = MAX-1;`. This correctly wraps the front index to the last valid position of the array (index MAX‑1) when it was at 0. With this fix the deque operates as a circular buffer and no out‑of‑bounds access occurs.\n\nAlternatively, implement the wrap‑around using modulo: `front = (front - 1 + MAX) % MAX;` which works for any value of front.",
+      "explanation": "In a circular array implementation the valid indices are 0 … MAX‑1. When front is 0 and we need to move it backward, it must become MAX‑1, not MAX. Using MAX writes past the array bounds, leading to undefined behaviour and corrupting memory. The modulo expression is a generic way to handle both decrement and wrap‑around."
+    },
+    {
+      "id": "q4",
+      "concept": "Abstract Data Type (ADT) vs. Data Structure",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "THEORY",
+      "difficulty": "MEDIUM",
+      "marks": 6,
+      "question_text": "Explain the distinction between an Abstract Data Type (ADT) and a concrete data structure. In your answer, discuss how the separation of logical specification from physical implementation influences software design, and illustrate your points with two concrete examples where the same ADT can be realized by different data structures.",
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "generated_by": "openai/gpt-oss-120b",
+      "model_answer": "An Abstract Data Type (ADT) defines a set of values and the operations that can be performed on those values, together with the mathematical properties (e.g., invariants) that the operations must satisfy. It is a logical specification that is independent of any particular implementation. A data structure, on the other hand, is a concrete organization of data in memory (or on disk) that provides a way to realize the ADT's operations.\n\nThe separation of logical specification from physical implementation yields several design benefits:\n1. **Encapsulation** – client code depends only on the ADT interface, not on how it is built, allowing the implementation to change without affecting users.\n2. **Flexibility** – different data structures can be chosen to meet performance, memory, or concurrency requirements while preserving the same external behavior.\n3. **Reusability** – the same ADT can be reused across many contexts; only the underlying structure needs to be swapped when requirements evolve.\n\n**Examples**:\n- **List ADT** – defined by operations such as insert, delete, retrieve, and traversal. It can be implemented as an **array‑based list** (contiguous memory, O(1) random access, costly insert/delete in the middle) or as a **linked list** (nodes with pointers, O(1) insertion/deletion given a node, slower random access).\n- **Priority Queue ADT** – provides insert and delete‑max/min operations with a total ordering. It can be realized with a **binary heap** (compact array, O(log n) insert/delete) or with a **balanced binary search tree** (e.g., AVL tree, O(log n) for all operations and supports ordered iteration).\n\nThus, the ADT gives a contract; the data structure fulfills that contract in a way that best matches the system’s constraints.",
+      "key_points": [
+        "Clear definition of ADT as logical specification and data structure as concrete implementation",
+        "Explanation of design benefits (encapsulation, flexibility, reusability)",
+        "Two concrete examples showing the same ADT realized by different data structures with their trade‑offs"
+      ]
+    },
+    {
+      "id": "q5",
+      "concept": "Applications of Stacks",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "THEORY",
+      "difficulty": "HARD",
+      "marks": 10,
+      "question_text": "Stacks are widely used in many software components. Choose any two applications from the list (function‑call management, undo mechanism, balanced‑parentheses checking, backtracking algorithms) and analyse why the LIFO property of a stack makes it the natural choice. Compare the operational requirements of the two applications and discuss any limitations of using a stack in each case.",
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "generated_by": "openai/gpt-oss-120b",
+      "model_answer": "**Application 1 – Function‑call management / recursion**\n- When a function is invoked, its activation record (parameters, local variables, return address) is pushed onto the call stack. The most recent call must finish before control returns to the previous one, which is exactly the LIFO order.\n- The stack automatically provides scope isolation and enables constant‑time push/pop, making it efficient for deep recursion.\n- *Limitation*: The fixed size of the call stack can cause overflow for excessively deep recursion; tail‑call optimisation or heap‑allocated continuations are needed to mitigate this.\n\n**Application 2 – Balanced‑parentheses checking in compilers**\n- The parser scans the source left‑to‑right. Every opening delimiter is pushed; when a closing delimiter appears, the top of the stack is popped and compared. The most recent unmatched opening symbol must be matched first, again a LIFO pattern.\n- This yields a linear‑time algorithm with O(n) time and O(k) auxiliary space, where k is the maximum nesting depth.\n- *Limitation*: The stack only validates proper nesting; it cannot detect mismatched types without additional logic, and very deep nesting may exhaust memory.\n\n**Comparison of operational requirements**\n- Both require *constant‑time* push and pop, but function‑call management also needs to store additional context (return address, registers) whereas parentheses checking stores only symbols.\n- Function calls may involve variable‑size frames, leading to fragmentation concerns; parentheses checking deals with fixed‑size tokens.\n- In both cases, the LIFO discipline guarantees that the most recent element is processed first, which aligns with the semantics of nested scopes or nested delimiters.\n\n**Overall assessment**\nThe LIFO nature of stacks directly models nested, hierarchical processes, making them the natural data structure for these applications. Their simplicity and efficiency outweigh the limitations, which can be mitigated by careful design (e.g., dynamic stack growth, tail‑call optimisation).",
+      "key_points": [
+        "Explanation of LIFO relevance for each chosen application",
+        "Comparison of what each application stores and its performance characteristics",
+        "Identification of limitations or edge cases for stack usage in each context"
+      ]
+    },
+    {
+      "id": "q6",
+      "concept": "Infix, Postfix, and Prefix Notations and Conversion",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "THEORY",
+      "difficulty": "HARD",
+      "marks": 10,
+      "question_text": "Describe the algorithmic steps required to convert an infix expression to its equivalent postfix form using a stack. Then, evaluate the expression (A + B) * (C - D) / E by first converting it to postfix and finally computing its value assuming A=2, B=3, C=8, D=5, E=5. Discuss the advantages of postfix evaluation over direct infix evaluation.",
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "generated_by": "openai/gpt-oss-120b",
+      "model_answer": "**Conversion algorithm (Infix → Postfix)**\n1. Initialise an empty operator stack and an empty output list.\n2. Scan the infix token stream from left to right.\n   - If the token is an operand, append it to the output.\n   - If the token is a left parenthesis ‘(’, push it onto the stack.\n   - If the token is a right parenthesis ‘)’, pop operators from the stack and append them to the output until a left parenthesis is encountered; discard both parentheses.\n   - If the token is an operator (e.g., +, –, *, /):\n     * While the stack is not empty and the operator at the top has **higher or equal precedence** (and is left‑associative), pop it to the output.\n     * Push the current operator onto the stack.\n3. After the scan, pop any remaining operators on the stack to the output.\n4. The output list now contains the postfix expression.\n\n**Applying the algorithm to (A+B)*(C‑D)/E**\n- Tokens: ( A + B ) * ( C - D ) / E\n- Step‑by‑step stack / output:\n  1. '(' → push '('                → stack: (   output: \n  2. A   → output A                → stack: (   output: A\n  3. '+' → push '+' (precedence lower than '(') → stack: ( +   output: A\n  4. B   → output B                → stack: ( +   output: A B\n  5. ')' → pop '+' → output '+'; pop '(' → stack:   output: A B +\n  6. '*' → push '*'                → stack: *   output: A B +\n  7. '(' → push '('                → stack: * (   output: A B +\n  8. C   → output C                → stack: * (   output: A B + C\n  9. '-' → push '-'                → stack: * ( -   output: A B + C\n 10. D   → output D                → stack: * ( -   output: A B + C D\n 11. ')' → pop '-' → output '-'; pop '(' → stack: *   output: A B + C D -\n 12. '/' → while top '*' has higher/equal precedence, pop '*' → output '*'; push '/' → stack: /   output: A B + C D - *\n 13. E   → output E                → stack: /   output: A B + C D - * E\n 14. End of input → pop '/' → output '/'\n- **Resulting postfix:** `A B + C D - * E /`\n\n**Postfix evaluation with given values**\n- Replace operands: 2 3 + 8 5 - * 5 /\n- Use an evaluation stack:\n  1. push 2, push 3 → stack: 2 3\n  2. '+' → pop 3,2 → compute 5 → push 5 → stack: 5\n  3. push 8, push 5 → stack: 5 8 5\n  4. '-' → pop 5,8 → compute 3 → push 3 → stack: 5 3\n  5. '*' → pop 3,5 → compute 15 → push 15 → stack: 15\n  6. push 5 → stack: 15 5\n  7. '/' → pop 5,15 → compute 3 → push 3 → stack: 3\n- Final result = **3**.\n\n**Advantages of postfix evaluation**\n- **No need for parentheses**: Operator precedence is encoded in the order, eliminating the parsing complexity of infix.\n- **Single left‑to‑right pass**: Both conversion and evaluation can be performed in linear time O(n).\n- **Simple runtime algorithm**: Evaluation uses only a stack with push/pop operations; no recursive descent or precedence tables are required.\n- **Deterministic execution**: The order of operations is unambiguous, which is valuable for compiler code generation and calculators.\n\nOverall, postfix notation transforms the problem of handling precedence and associativity into a straightforward stack manipulation, leading to more efficient and easier‑to‑implement evaluators.",
+      "key_points": [
+        "Step‑by‑step description of the infix‑to‑postfix stack algorithm",
+        "Correct postfix expression and numeric evaluation yielding 3",
+        "Clear articulation of why postfix evaluation is advantageous over infix"
+      ]
+    }
+  ],
+  "balance_note": "Target: 4 easy / 6 medium / 2 hard. Actual: 5 easy / 3 medium / 4 hard. Shortfall: 3 medium question(s)."
+}

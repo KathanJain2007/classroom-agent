@@ -1,0 +1,232 @@
+{
+  "source_documents": [
+    "DS-UNIT-1.pdf",
+    "DS-UNIT-2.pdf",
+    "Double Ended Queue.docx"
+  ],
+  "total_marks": 42,
+  "questions": [
+    {
+      "id": "q1",
+      "concept": "Array‑based Queue Implementation",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "CODE",
+      "difficulty": "MEDIUM",
+      "marks": 5,
+      "question_text": "Write a complete, self‑contained C program that implements a fixed‑size linear (non‑circular) queue using an array. The program must define a struct Queue with members `int data[MAX]; int front; int rear;` and provide the following functions:\n\n- `void initQueue(Queue *q);`\n- `int isEmpty(const Queue *q);`\n- `int isFull(const Queue *q);`\n- `int enqueue(Queue *q, int value);`  // returns 1 on success, 0 on overflow\n- `int dequeue(Queue *q, int *value);` // returns 1 on success, 0 on underflow\n\nThe `main` function should demonstrate the queue by enqueuing the integers 10, 20, 30, then dequeuing two values and printing them, then enqueuing 40 and 50, finally dequeuing all remaining elements and printing each. The output must be exactly:\n```\n10\n20\n30\n40\n50\n```",
+      "verification_status": "verified",
+      "verification_note": "Independent solution confirmed equivalent: Solution B implements the same fixed‑size linear queue semantics, produces the required output, and respects the same capacity constraints despite using a different initial rear value and empty‑check logic.",
+      "generated_by": "openai/gpt-oss-120b",
+      "language": "C",
+      "code_snippet": "#include <stdio.h>\n#define MAX 5\n\ntypedef struct {\n    int data[MAX];\n    int front;\n    int rear;\n} Queue;\n\nvoid initQueue(Queue *q) {\n    // TODO: initialise front and rear\n}\n\nint isEmpty(const Queue *q) {\n    // TODO: return 1 if empty else 0\n    return 0;\n}\n\nint isFull(const Queue *q) {\n    // TODO: return 1 if full else 0\n    return 0;\n}\n\nint enqueue(Queue *q, int value) {\n    // TODO: add value to rear, update indices, handle overflow\n    return 0;\n}\n\nint dequeue(Queue *q, int *value) {\n    // TODO: remove value from front, update indices, handle underflow\n    return 0;\n}\n\nint main(void) {\n    Queue q;\n    initQueue(&q);\n    // demonstration sequence (do NOT modify)\n    enqueue(&q, 10);\n    enqueue(&q, 20);\n    enqueue(&q, 30);\n    int v;\n    dequeue(&q, &v); printf(\"%d\\n\", v);\n    dequeue(&q, &v); printf(\"%d\\n\", v);\n    enqueue(&q, 40);\n    enqueue(&q, 50);\n    while (!isEmpty(&q)) {\n        dequeue(&q, &v);\n        printf(\"%d\\n\", v);\n    }\n    return 0;\n}",
+      "expected_answer": "#include <stdio.h>\n#define MAX 5\n\ntypedef struct {\n    int data[MAX];\n    int front;\n    int rear;\n} Queue;\n\nvoid initQueue(Queue *q) {\n    q->front = 0;\n    q->rear = 0;\n}\n\nint isEmpty(const Queue *q) {\n    return q->front == q->rear;\n}\n\nint isFull(const Queue *q) {\n    return q->rear == MAX;\n}\n\nint enqueue(Queue *q, int value) {\n    if (isFull(q)) return 0; // overflow\n    q->data[q->rear++] = value;\n    return 1;\n}\n\nint dequeue(Queue *q, int *value) {\n    if (isEmpty(q)) return 0; // underflow\n    *value = q->data[q->front++];\n    // optional reset when queue becomes empty to reuse array space\n    if (isEmpty(q)) {\n        q->front = q->rear = 0;\n    }\n    return 1;\n}\n\nint main(void) {\n    Queue q;\n    initQueue(&q);\n    enqueue(&q, 10);\n    enqueue(&q, 20);\n    enqueue(&q, 30);\n    int v;\n    dequeue(&q, &v); printf(\"%d\\n\", v);\n    dequeue(&q, &v); printf(\"%d\\n\", v);\n    enqueue(&q, 40);\n    enqueue(&q, 50);\n    while (!isEmpty(&q)) {\n        dequeue(&q, &v);\n        printf(\"%d\\n\", v);\n    }\n    return 0;\n}",
+      "explanation": "The solution uses a static array of size MAX and two integer indices. `front` points to the next element to be dequeued, `rear` points to the position where the next element will be enqueued. Because the queue is linear, when it becomes empty we reset both indices to 0 so that the array can be reused without circular arithmetic. All operations run in O(1) time and the program prints the required sequence."
+    },
+    {
+      "id": "q2",
+      "concept": "Double‑ended Queue (Deque)",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "CODE",
+      "difficulty": "MEDIUM",
+      "marks": 5,
+      "question_text": "Implement a double‑ended queue (deque) using a fixed‑size array in C. Provide the following operations:\n\n- `void initDeque(Deque *d);`\n- `int isEmpty(const Deque *d);`\n- `int isFull(const Deque *d);`\n- `int pushFront(Deque *d, int x);`\n- `int pushRear(Deque *d, int x);`\n- `int popFront(Deque *d, int *x);`\n- `int popRear(Deque *d, int *x);`\n\nThe deque must be *circular* so that all slots can be used. Write a `main` that performs the sequence:\n1. pushRear 1, pushRear 2, pushFront 3\n2. popRear (print), popFront (print)\n3. pushFront 4, pushRear 5\n4. popFront (print), popRear (print)\nThe printed numbers, each on its own line, must be:\n```\n2\n3\n4\n5\n```",
+      "verification_status": "needs_review",
+      "verification_note": "Equivalence check failed: Solution B is incomplete (only a fragment of code) and does not provide the required deque implementation or functionality.",
+      "generated_by": "openai/gpt-oss-120b",
+      "language": "C",
+      "code_snippet": "#include <stdio.h>\n#define CAP 5\n\ntypedef struct {\n    int data[CAP];\n    int front; // index of first element\n    int rear;  // index one past last element\n    int size;  // current number of elements\n} Deque;\n\nvoid initDeque(Deque *d) {\n    // TODO initialise members\n}\n\nint isEmpty(const Deque *d) { return 0; }\nint isFull(const Deque *d) { return 0; }\n\nint pushFront(Deque *d, int x) { return 0; }\nint pushRear(Deque *d, int x) { return 0; }\nint popFront(Deque *d, int *x) { return 0; }\nint popRear(Deque *d, int *x) { return 0; }\n\nint main(void) {\n    Deque d;\n    initDeque(&d);\n    pushRear(&d, 1);\n    pushRear(&d, 2);\n    pushFront(&d, 3);\n    int v;\n    popRear(&d, &v); printf(\"%d\\n\", v);\n    popFront(&d, &v); printf(\"%d\\n\", v);\n    pushFront(&d, 4);\n    pushRear(&d, 5);\n    popFront(&d, &v); printf(\"%d\\n\", v);\n    popRear(&d, &v); printf(\"%d\\n\", v);\n    return 0;\n}",
+      "expected_answer": "#include <stdio.h>\n#define CAP 5\n\ntypedef struct {\n    int data[CAP];\n    int front; // points to current front element\n    int rear;  // points to position where next rear element will be inserted\n    int size;  // number of stored elements\n} Deque;\n\nvoid initDeque(Deque *d) {\n    d->front = 0;\n    d->rear = 0;\n    d->size = 0;\n}\n\nint isEmpty(const Deque *d) { return d->size == 0; }\nint isFull(const Deque *d) { return d->size == CAP; }\n\nint pushFront(Deque *d, int x) {\n    if (isFull(d)) return 0;\n    d->front = (d->front - 1 + CAP) % CAP;\n    d->data[d->front] = x;\n    d->size++;\n    return 1;\n}\n\nint pushRear(Deque *d, int x) {\n    if (isFull(d)) return 0;\n    d->data[d->rear] = x;\n    d->rear = (d->rear + 1) % CAP;\n    d->size++;\n    return 1;\n}\n\nint popFront(Deque *d, int *x) {\n    if (isEmpty(d)) return 0;\n    *x = d->data[d->front];\n    d->front = (d->front + 1) % CAP;\n    d->size--;\n    return 1;\n}\n\nint popRear(Deque *d, int *x) {\n    if (isEmpty(d)) return 0;\n    d->rear = (d->rear - 1 + CAP) % CAP;\n    *x = d->data[d->rear];\n    d->size--;\n    return 1;\n}\n\nint main(void) {\n    Deque d;\n    initDeque(&d);\n    pushRear(&d, 1);\n    pushRear(&d, 2);\n    pushFront(&d, 3);\n    int v;\n    popRear(&d, &v); printf(\"%d\\n\", v);\n    popFront(&d, &v); printf(\"%d\\n\", v);\n    pushFront(&d, 4);\n    pushRear(&d, 5);\n    popFront(&d, &v); printf(\"%d\\n\", v);\n    popRear(&d, &v); printf(\"%d\\n\", v);\n    return 0;\n}",
+      "explanation": "A circular array allows the deque to use every slot. `front` always points to the current first element, `rear` points to the slot where the next element will be inserted at the back. Insertions adjust the indices modulo CAP, and `size` tracks occupancy, making overflow/underflow checks trivial. The sequence of operations yields the required output."
+    },
+    {
+      "id": "q3",
+      "concept": "Dynamic Memory Allocation in C",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "CODE",
+      "difficulty": "MEDIUM",
+      "marks": 5,
+      "question_text": "The program reads an integer n, allocates an array of n doubles, fills each element with 1.0/(i+1), prints the sum of the elements and exits. The current code contains multiple memory‑related bugs. Identify and correct all issues so that the program works correctly and does not leak memory.",
+      "verification_status": "needs_review",
+      "verification_note": "Equivalence check failed: Solution B is empty and does not address any of the memory‑related bugs described in the reference solution.",
+      "generated_by": "openai/gpt-oss-120b",
+      "language": "C",
+      "code_snippet": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\\\"%d\\\", &n);\n    double *arr = (double*)malloc(n); // BUG: allocation size\n    for (int i = 0; i <= n; i++) { // BUG: off‑by‑one\n        arr[i] = 1.0 / (i + 1);\n    }\n    double sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += arr[i];\n    }\n    printf(\\\"%f\\\\n\\\", sum);\n    // missing free(arr);\n    return 0;\n}",
+      "expected_answer": "Fix the allocation: double *arr = malloc(n * sizeof(double)); (remove the cast). Fix the loop bound: for (int i = 0; i < n; i++) { ... }. Add a call to free(arr) before returning. These changes allocate the correct number of bytes, prevent out‑of‑bounds writes, and release the memory.",
+      "explanation": "malloc expects the number of bytes, so multiplying by sizeof(double) allocates enough space for n elements. Using i < n avoids writing past the allocated array (the original i <= n writes one element beyond). Calling free releases the heap memory, preventing a memory leak. Removing the unnecessary cast improves portability."
+    },
+    {
+      "id": "q4",
+      "concept": "Recursion and Types of Recursive Functions",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "THEORY",
+      "difficulty": "MEDIUM",
+      "marks": 5,
+      "question_text": "Compare and contrast tail recursion and head (non‑tail) recursion in terms of call‑stack behavior, possible compiler optimizations, and suitability for solving problems such as factorial, Fibonacci, and the Tower of Hanoi. Illustrate your answer with brief pseudo‑code for each type and discuss the impact on space complexity.",
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "generated_by": "openai/gpt-oss-120b",
+      "model_answer": "**Tail Recursion vs. Head (Non‑Tail) Recursion**\n1. **Definition**\n   - *Tail recursion*: the recursive call is the last operation performed by the function; no further computation follows the call.\n   - *Head (non‑tail) recursion*: additional work (e.g., arithmetic, concatenation) is performed after the recursive call returns.\n2. **Call‑stack behavior**\n   - In head recursion a new stack frame is created for each call and remains active until the call returns, so the maximum stack depth equals the recursion depth.\n   - In tail recursion the current frame does not need to retain any state after the call, allowing many compilers/interpreters to replace the call with a jump (tail‑call optimisation), effectively reusing a single frame.\n3. **Compiler/Interpreter optimisation**\n   - Tail‑call optimisation (TCO) can transform a tail‑recursive function into an iterative loop, eliminating the linear stack growth.\n   - Head recursion cannot be optimised in this way because post‑call work must be performed after the deeper call returns.\n4. **Suitability for typical problems**\n   - *Factorial*: can be written both ways. Tail‑recursive version uses an accumulator (e.g., `fact(n, acc)`), enabling TCO; head‑recursive version (`return n * fact(n‑1)`) is simpler but uses O(n) stack.\n   - *Fibonacci*: naïve recursive Fibonacci is inherently head‑recursive (`return fib(n‑1)+fib(n‑2)`) and cannot be tail‑optimised; a tail‑recursive version requires extra parameters to carry the two previous values.\n   - *Tower of Hanoi*: naturally expressed as head recursion because the move of the largest disc occurs **between** the two recursive calls (`move n‑1 from A to B; move disc n; move n‑1 from B to C`). Tail recursion is not suitable without redesigning the algorithm.\n5. **Space‑complexity impact**\n   - With TCO, tail‑recursive algorithms run in O(1) auxiliary stack space.\n   - Head‑recursive algorithms require O(n) stack frames (where n is recursion depth).\n\n**Pseudo‑code examples**\n```text\n// Tail‑recursive factorial\nfunction factTR(n, acc = 1):\n    if n == 0: return acc\n    return factTR(n‑1, acc * n)\n\n// Head‑recursive factorial\nfunction factHR(n):\n    if n == 0: return 1\n    return n * factHR(n‑1)\n\n// Tail‑recursive Fibonacci (uses two accumulators)\nfunction fibTR(k, a = 0, b = 1):\n    if k == 0: return a\n    return fibTR(k‑1, b, a + b)\n\n// Head‑recursive Tower of Hanoi\nprocedure hanoi(n, source, target, auxiliary):\n    if n == 1:\n        print \"Move disc 1 from\", source, \"to\", target\n    else:\n        hanoi(n‑1, source, auxiliary, target)\n        print \"Move disc\", n, \"from\", source, \"to\", target\n        hanoi(n‑1, auxiliary, target, source)\n```",
+      "key_points": [
+        "Definition and distinguishing characteristic of tail vs. head recursion",
+        "Effect on call‑stack depth and possibility of tail‑call optimisation",
+        "Appropriate use‑cases (factorial, Fibonacci, Tower of Hanoi) with example pseudo‑code and resulting space‑complexity"
+      ]
+    },
+    {
+      "id": "q5",
+      "concept": "Abstract Data Type (ADT) vs. Data Structure",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "THEORY",
+      "difficulty": "MEDIUM",
+      "marks": 5,
+      "question_text": "Explain the conceptual distinction between an Abstract Data Type (ADT) and a concrete data structure. Using the List ADT as an example, compare at least two different data‑structure implementations (e.g., array‑based list and linked‑list) in terms of operation complexity, memory usage, and flexibility. Justify why separating ADT from its implementation is beneficial in software design.",
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "generated_by": "openai/gpt-oss-120b",
+      "model_answer": "**Conceptual distinction**\n- *ADT*: a mathematical model that defines a set of values and the operations that can be performed on those values, together with their expected behavior (pre‑ and post‑conditions). It is *interface‑only*; no storage or algorithmic details are prescribed.\n- *Data structure*: a concrete representation in memory that implements the ADT. It specifies how data are organized, how operations are carried out, and the associated algorithmic costs.\n\n**List ADT** – typical operations: `insert(pos, x)`, `delete(pos)`, `get(pos)`, `size()`, `iterate()`.\n\n**Implementation 1: Array‑based list**\n- *Memory*: contiguous block of size *capacity*; may waste space if capacity > size, but locality of reference is excellent.\n- *Operation complexity*:\n  * `get(pos)`: O(1) (direct indexing)\n  * `insert`/`delete` at end: O(1) amortised (when resizing is infrequent)\n  * `insert`/`delete` at arbitrary position: O(n) because elements must be shifted.\n- *Flexibility*: fixed capacity; resizing requires allocating a new array and copying elements, which can be costly.\n\n**Implementation 2: Singly linked list**\n- *Memory*: each element stored in a node containing the data and a pointer to the next node; extra memory per element for the pointer.\n- *Operation complexity*:\n  * `get(pos)`: O(n) – must traverse from the head to the desired position.\n  * `insert`/`delete` at head: O(1).\n  * `insert`/`delete` at arbitrary position (given a pointer to the predecessor): O(1); otherwise O(n) to locate the predecessor.\n- *Flexibility*: dynamic size, no need for resizing; nodes can be scattered in memory, leading to poorer cache performance.\n\n**Why separate ADT from implementation?**\n1. **Encapsulation & Modularity** – client code depends only on the ADT contract; the underlying representation can change without affecting callers.\n2. **Interchangeability** – different implementations can be swapped to meet performance or memory constraints (e.g., use array‑list for read‑heavy workloads, linked‑list for frequent insertions at the front).\n3. **Maintainability** – bugs or optimisations are confined to the implementation module; the ADT specification remains stable.\n4. **Abstraction for reasoning** – algorithms can be designed and proved correct at the ADT level, independent of low‑level details.\n\nThus, the ADT provides a clean, implementation‑agnostic interface, while concrete data structures realise that interface with trade‑offs in time, space, and flexibility.\n",
+      "key_points": [
+        "Clear definition of ADT versus concrete data structure",
+        "Comparison of array‑based list and linked‑list on time complexity, memory usage, and flexibility",
+        "Explanation of benefits of separating ADT from its implementation (encapsulation, interchangeability, maintainability, abstraction)"
+      ]
+    },
+    {
+      "id": "q6",
+      "concept": "Infix‑to‑Postfix Conversion Using a Stack",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "THEORY",
+      "difficulty": "MEDIUM",
+      "marks": 5,
+      "question_text": "Explain the step‑by‑step process of converting the infix expression A+(B*C-D)/E^F to postfix using a stack. In your answer, describe how the stack is used to handle operators, precedence, and parentheses, and why operands are output immediately.",
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "generated_by": "openai/gpt-oss-120b",
+      "model_answer": "To convert A+(B*C-D)/E^F to postfix, scan the expression left to right:\n1. When an operand (letter or number) is encountered, output it immediately.\n2. When a '(' is encountered, push it onto the stack.\n3. When a ')' is encountered, pop and output operators until '(' is on top, then discard the '('.\n4. For an operator, compare its precedence with the operator on the top of the stack (if any). While the stack top has an operator of higher precedence, or of equal precedence and the incoming operator is left‑associative, pop the stack and output that operator. Then push the incoming operator.\n5. After the entire infix string has been processed, pop any remaining operators from the stack and append them to the output.\nApplying these rules to A+(B*C-D)/E^F gives the postfix expression: A B C * D - E F ^ / +. The stack guarantees that operators appear in the correct order respecting precedence and parentheses, while operands are emitted immediately because they do not affect ordering.",
+      "key_points": [
+        "Describes scanning the infix expression left‑to‑right and immediate output of operands",
+        "Explains how operators are pushed, when they are popped based on precedence and parentheses, and handling of associativity",
+        "Provides the final postfix result \"A B C * D - E F ^ / +\" and justifies the ordering"
+      ]
+    },
+    {
+      "id": "q7",
+      "concept": "Postfix Expression Evaluation",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "question_text": "Evaluate the postfix expression: 5 3 2 * + 9 - . What integer value is obtained?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option A.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "2",
+        "8",
+        "10",
+        "14"
+      ],
+      "correct_option_index": 0,
+      "explanation": "Scanning left to right: push 5, push 3, push 2, encounter '*', compute 3*2=6 (stack: 5,6), encounter '+', compute 5+6=11 (stack: 11), push 9, encounter '-', compute 11-9=2. Hence option A (2) is correct. Option B (8) results from mistakenly using 5+3*2-9. Option C (10) would arise if the subtraction were performed before addition. Option D (14) ignores the order of operations entirely."
+    },
+    {
+      "id": "q8",
+      "concept": "Circular Queue",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "question_text": "In an array‑based circular queue of size N, which condition correctly detects that the queue is full?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option A.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "(rear + 1) % N == front",
+        "rear == front",
+        "(rear - front + N) % N == 0",
+        "rear == (front - 1 + N) % N"
+      ],
+      "correct_option_index": 0,
+      "explanation": "A circular queue is full when advancing rear would collide with front, i.e., (rear+1)%N == front, so option A is correct. Option B (rear == front) indicates an empty queue, not full. Option C simplifies to rear == front, again empty. Option D is algebraically equivalent to option A but written incorrectly; it checks rear == front‑1 (mod N) which is the same condition but reversed, leading to confusion and is not the standard full‑test formulation."
+    },
+    {
+      "id": "q9",
+      "concept": "Linked‑list Queue Implementation",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "question_text": "When a queue is implemented with a singly linked list that maintains pointers to both front and rear, what are the worst‑case time complexities of Enqueue and Dequeue operations?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option A.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "Both O(1)",
+        "Enqueue O(1), Dequeue O(n)",
+        "Enqueue O(n), Dequeue O(1)",
+        "Both O(n)"
+      ],
+      "correct_option_index": 0,
+      "explanation": "With front and rear pointers, inserting at the rear (Enqueue) and removing from the front (Dequeue) each require only constant‑time pointer updates, so both are O(1). Option B incorrectly assumes Dequeue must traverse the list. Option C swaps the complexities. Option D suggests Enqueue needs traversal, which is false when a rear pointer is kept. Option 4 is wrong for both operations."
+    },
+    {
+      "id": "q10",
+      "concept": "Queue Abstract Data Type (FIFO)",
+      "source_file": "DS-UNIT-2.pdf",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "question_text": "A queue stores the elements A, B, C in that order (A at the front). After performing one Dequeue followed by an Enqueue of element D, which sequence now represents the queue from front to rear?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option A.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "B, C, D",
+        "A, B, C, D",
+        "C, D, B",
+        "D, B, C"
+      ],
+      "correct_option_index": 0,
+      "explanation": "Dequeue removes the front element A, leaving B, C. Enqueue adds D at the rear, yielding B, C, D (option A). Option B incorrectly keeps A. Option C adds D but forgets the removal of A. Option D rearranges order, violating FIFO."
+    },
+    {
+      "id": "q11",
+      "concept": "Stack Abstract Data Type (LIFO) and Core Operations",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "question_text": "Starting with an empty stack, execute the sequence: push(7), push(3), pop(), push(5), top(). What value is returned by top()?",
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option A.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "5",
+        "7",
+        "3",
+        "Empty stack error"
+      ],
+      "correct_option_index": 0,
+      "explanation": "push(7) → [7]; push(3) → [7,3]; pop() removes 3 → [7]; push(5) → [7,5]; top() reads 5. Hence option A is correct. Option B (7) would be the top if the second push had never occurred. Option C (3) is the value that was popped. Option D is wrong because the stack is not empty after the operations."
+    },
+    {
+      "id": "q12",
+      "concept": "Fundamental Data Structure Operations",
+      "source_file": "DS-UNIT-1.pdf",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "question_text": "Which of the following is NOT typically classified as a core operation for most elementary data structures?",
+      "verification_status": "needs_review",
+      "verification_note": "Answer key conflict: generator marked C, verifier chose A. Verifier reasoning: Merging is not a standard core operation for basic data structures like arrays, lists, stacks, queues.",
+      "generated_by": "openai/gpt-oss-120b",
+      "options": [
+        "Merging",
+        "Sorting",
+        "Hashing",
+        "Searching"
+      ],
+      "correct_option_index": 2,
+      "explanation": "Core operations usually include traversal, insertion, deletion, searching, sorting, and merging. Hashing is a technique for indexing, not a fundamental operation performed on the structure itself, so option C is correct. Merging (option A) combines two structures, sorting (option B) orders elements, and searching (option D) locates elements; all are standard core operations."
+    }
+  ]
+}

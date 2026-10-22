@@ -1,0 +1,257 @@
+{
+  "source_documents": [
+    "DS-UNIT-1.pdf",
+    "DS-UNIT-2.pdf",
+    "Double Ended Queue.docx"
+  ],
+  "total_marks": 55,
+  "balance_note": "Target: 4 easy / 6 medium / 2 hard. Actual: 5 easy / 3 medium / 4 hard. Shortfall: 3 medium question(s).",
+  "questions": [
+    {
+      "question_number": 1,
+      "id": "q10",
+      "concept": "Stack Abstract Data Type (LIFO) and Core Operations",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option D.",
+      "correct_option_index": 3,
+      "correct_option_letter": "D",
+      "explanation": "push, pop, and top/peek are the three fundamental stack operations (plus status checks). enqueue belongs to the Queue ADT, not the Stack ADT, making option D the correct answer. The other three are essential for any stack implementation."
+    },
+    {
+      "question_number": 2,
+      "id": "q11",
+      "concept": "Fundamental Data Structure Operations",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option D.",
+      "correct_option_index": 3,
+      "correct_option_letter": "D",
+      "explanation": "Binary search trees support traversal, insertion, and deletion as core operations. Merging two BSTs into a single balanced BST is a higher‑level algorithm, not a primitive operation defined for the structure, so option D is correct. The other three are directly supported by the BST interface."
+    },
+    {
+      "question_number": 3,
+      "id": "q7",
+      "concept": "Postfix Expression Evaluation",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option B.",
+      "correct_option_index": 1,
+      "correct_option_letter": "B",
+      "explanation": "Scanning left‑to‑right: 2 3 + =5, then 6 * 5 =30, finally 30 4 - =26. Option B (26) is correct. The other numbers result from arithmetic mistakes such as forgetting the subtraction or mis‑ordering the operations."
+    },
+    {
+      "question_number": 4,
+      "id": "q8",
+      "concept": "Recursion and Its Types",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option C.",
+      "correct_option_index": 2,
+      "correct_option_letter": "C",
+      "explanation": "Option C calls itself as the last action and passes an accumulator, so the recursive call is in tail position – this is tail recursion. Option A is a classic direct recursion but the multiplication after the call prevents tail position. Option B shows indirect recursion, not tail. Option D is head recursion because work (printing) occurs before the recursive call."
+    },
+    {
+      "question_number": 5,
+      "id": "q9",
+      "concept": "Circular Queue",
+      "type": "MCQ",
+      "difficulty": "EASY",
+      "marks": 1,
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option A.",
+      "correct_option_index": 0,
+      "correct_option_letter": "A",
+      "explanation": "When the next position of rear would collide with front, i.e., (rear+1) mod N equals front, the queue is full. Option A expresses this precisely. Option B is the empty‑queue condition. Option C is algebraically equivalent to A but more obscure; it is also correct but the standard textbook condition is A. Option D can never be true because rear‑front is bounded by N‑1."
+    },
+    {
+      "question_number": 6,
+      "id": "q12",
+      "concept": "Queue Abstract Data Type (FIFO)",
+      "type": "MCQ",
+      "difficulty": "MEDIUM",
+      "marks": 2,
+      "verification_status": "verified",
+      "verification_note": "Independent verifier agreed on option C.",
+      "correct_option_index": 2,
+      "correct_option_letter": "C",
+      "explanation": "Step‑by‑step: after enq10 and enq20 the queue is [10,20]; dequeue removes 10 → [20]; enq30 → [20,30]; dequeue removes 20 → [30]. Hence 30 is now at the front, making option C correct. Options A and B refer to elements already removed, and D would be true only if another dequeue were performed."
+    },
+    {
+      "question_number": 7,
+      "id": "q3",
+      "concept": "Dynamic Memory Allocation in C",
+      "type": "CODE",
+      "difficulty": "MEDIUM",
+      "marks": 6,
+      "verification_status": "verified",
+      "verification_note": "Independent solution confirmed equivalent: Solution B uses a temporary pointer for realloc, checks for failure, frees the original block if needed, which aligns with the reference solution.",
+      "expected_answer": "Use a temporary pointer for realloc:\nint *temp = realloc(arr, 2*n * sizeof(int));\nif(temp==NULL){ free(arr); perror(\"realloc\"); return 1; }\narr = temp;\n// then continue filling and printing.\nThis prevents loss of the original block if realloc fails.",
+      "explanation": "realloc may return NULL without freeing the original memory. Assigning its return directly to the original pointer can cause a memory leak and dereferencing NULL. Using a temporary pointer preserves the original block until the new allocation succeeds.",
+      "mark_breakdown": [
+        {
+          "criterion": "Core correctness and algorithmic logic: recognise improper use of realloc and provide safe reallocation pattern",
+          "marks": 3
+        },
+        {
+          "criterion": "Handling edge cases and boundary conditions: handle realloc failure without losing original memory block",
+          "marks": 2
+        },
+        {
+          "criterion": "Code quality, syntax, and proper memory management: use temporary pointer, check NULL, free on failure, clear comments",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "question_number": 8,
+      "id": "q1",
+      "concept": "Array‑based Queue Implementation",
+      "type": "CODE",
+      "difficulty": "HARD",
+      "marks": 8,
+      "verification_status": "verified",
+      "verification_note": "Independent solution confirmed equivalent: Solution B implements the same corrections: isFull checks rear == MAX-1, proper empty check, and prevents rear overflow, matching the reference fix.",
+      "expected_answer": "Fix isFull() to return rear == MAX-1; optionally also change isEmpty() to return front == -1; Ensure enqueue does not increment rear beyond MAX-1. After fixing, the sequence prints: 10 20 30 40 50 70 80 and overflow/underflow messages appear at the correct points.",
+      "explanation": "In a linear array queue of size MAX, the last valid index is MAX-1. The original isFull() used rear == MAX, which never becomes true until an out‑of‑bounds write occurs, causing overflow. Resetting front and rear when the queue becomes empty prevents stale indices. Correcting these conditions restores proper bounded queue semantics.",
+      "mark_breakdown": [
+        {
+          "criterion": "Core correctness and algorithmic logic: identify and fix isFull/isEmpty logic and correct enqueue/dequeue updates",
+          "marks": 4
+        },
+        {
+          "criterion": "Handling edge cases and boundary conditions: ensure proper overflow/underflow detection at array limits",
+          "marks": 2
+        },
+        {
+          "criterion": "Code quality, syntax, and proper memory management: clear code, correct use of indices, no undefined behavior",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "question_number": 9,
+      "id": "q2",
+      "concept": "Double‑Ended Queue (Deque)",
+      "type": "CODE",
+      "difficulty": "HARD",
+      "marks": 8,
+      "verification_status": "verified",
+      "verification_note": "Independent solution confirmed equivalent: Solution B wraps the front index to MAX-1 when it is 0, exactly the fix described in the reference solution.",
+      "expected_answer": "Change the line `front = MAX;` in insertFront to `front = MAX-1;`. This correctly wraps the front index to the last valid position of the array (index MAX‑1) when it was at 0. With this fix the deque operates as a circular buffer and no out‑of‑bounds access occurs.\n\nAlternatively, implement the wrap‑around using modulo: `front = (front - 1 + MAX) % MAX;` which works for any value of front.",
+      "explanation": "In a circular array implementation the valid indices are 0 … MAX‑1. When front is 0 and we need to move it backward, it must become MAX‑1, not MAX. Using MAX writes past the array bounds, leading to undefined behaviour and corrupting memory. The modulo expression is a generic way to handle both decrement and wrap‑around.",
+      "mark_breakdown": [
+        {
+          "criterion": "Core correctness and algorithmic logic: fix wrap‑around logic in insertFront so front index wraps correctly",
+          "marks": 4
+        },
+        {
+          "criterion": "Handling edge cases and boundary conditions: correctly handle front at position 0 and maintain circular buffer invariants",
+          "marks": 2
+        },
+        {
+          "criterion": "Code quality, syntax, and proper memory management: clean implementation, appropriate use of modulo or constant, no out‑of‑bounds writes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "question_number": 10,
+      "id": "q4",
+      "concept": "Abstract Data Type (ADT) vs. Data Structure",
+      "type": "THEORY",
+      "difficulty": "MEDIUM",
+      "marks": 6,
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "model_answer": "An Abstract Data Type (ADT) defines a set of values and the operations that can be performed on those values, together with the mathematical properties (e.g., invariants) that the operations must satisfy. It is a logical specification that is independent of any particular implementation. A data structure, on the other hand, is a concrete organization of data in memory (or on disk) that provides a way to realize the ADT's operations.\n\nThe separation of logical specification from physical implementation yields several design benefits:\n1. **Encapsulation** – client code depends only on the ADT interface, not on how it is built, allowing the implementation to change without affecting users.\n2. **Flexibility** – different data structures can be chosen to meet performance, memory, or concurrency requirements while preserving the same external behavior.\n3. **Reusability** – the same ADT can be reused across many contexts; only the underlying structure needs to be swapped when requirements evolve.\n\n**Examples**:\n- **List ADT** – defined by operations such as insert, delete, retrieve, and traversal. It can be implemented as an **array‑based list** (contiguous memory, O(1) random access, costly insert/delete in the middle) or as a **linked list** (nodes with pointers, O(1) insertion/deletion given a node, slower random access).\n- **Priority Queue ADT** – provides insert and delete‑max/min operations with a total ordering. It can be realized with a **binary heap** (compact array, O(log n) insert/delete) or with a **balanced binary search tree** (e.g., AVL tree, O(log n) for all operations and supports ordered iteration).\n\nThus, the ADT gives a contract; the data structure fulfills that contract in a way that best matches the system’s constraints.",
+      "key_points": [
+        "Clear definition of ADT as logical specification and data structure as concrete implementation",
+        "Explanation of design benefits (encapsulation, flexibility, reusability)",
+        "Two concrete examples showing the same ADT realized by different data structures with their trade‑offs"
+      ],
+      "mark_breakdown": [
+        {
+          "criterion": "Clear definition of ADT vs. concrete data structure as logical specification versus physical implementation",
+          "marks": 2
+        },
+        {
+          "criterion": "Explanation of design benefits (encapsulation, flexibility, reusability) arising from the separation",
+          "marks": 2
+        },
+        {
+          "criterion": "Two concrete examples showing the same ADT realised by different structures with discussion of trade‑offs",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "question_number": 11,
+      "id": "q5",
+      "concept": "Applications of Stacks",
+      "type": "THEORY",
+      "difficulty": "HARD",
+      "marks": 10,
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "model_answer": "**Application 1 – Function‑call management / recursion**\n- When a function is invoked, its activation record (parameters, local variables, return address) is pushed onto the call stack. The most recent call must finish before control returns to the previous one, which is exactly the LIFO order.\n- The stack automatically provides scope isolation and enables constant‑time push/pop, making it efficient for deep recursion.\n- *Limitation*: The fixed size of the call stack can cause overflow for excessively deep recursion; tail‑call optimisation or heap‑allocated continuations are needed to mitigate this.\n\n**Application 2 – Balanced‑parentheses checking in compilers**\n- The parser scans the source left‑to‑right. Every opening delimiter is pushed; when a closing delimiter appears, the top of the stack is popped and compared. The most recent unmatched opening symbol must be matched first, again a LIFO pattern.\n- This yields a linear‑time algorithm with O(n) time and O(k) auxiliary space, where k is the maximum nesting depth.\n- *Limitation*: The stack only validates proper nesting; it cannot detect mismatched types without additional logic, and very deep nesting may exhaust memory.\n\n**Comparison of operational requirements**\n- Both require *constant‑time* push and pop, but function‑call management also needs to store additional context (return address, registers) whereas parentheses checking stores only symbols.\n- Function calls may involve variable‑size frames, leading to fragmentation concerns; parentheses checking deals with fixed‑size tokens.\n- In both cases, the LIFO discipline guarantees that the most recent element is processed first, which aligns with the semantics of nested scopes or nested delimiters.\n\n**Overall assessment**\nThe LIFO nature of stacks directly models nested, hierarchical processes, making them the natural data structure for these applications. Their simplicity and efficiency outweigh the limitations, which can be mitigated by careful design (e.g., dynamic stack growth, tail‑call optimisation).",
+      "key_points": [
+        "Explanation of LIFO relevance for each chosen application",
+        "Comparison of what each application stores and its performance characteristics",
+        "Identification of limitations or edge cases for stack usage in each context"
+      ],
+      "mark_breakdown": [
+        {
+          "criterion": "Explanation of why LIFO is essential for each chosen application (function‑call management and balanced‑parentheses checking)",
+          "marks": 4
+        },
+        {
+          "criterion": "Comparison of operational requirements: what each stores, performance characteristics, and how LIFO satisfies them",
+          "marks": 3
+        },
+        {
+          "criterion": "Identification of limitations or edge cases for stack use in each application",
+          "marks": 3
+        }
+      ]
+    },
+    {
+      "question_number": 12,
+      "id": "q6",
+      "concept": "Infix, Postfix, and Prefix Notations and Conversion",
+      "type": "THEORY",
+      "difficulty": "HARD",
+      "marks": 10,
+      "verification_status": "not_applicable",
+      "verification_note": "Open-ended theory question; unverified by design.",
+      "model_answer": "**Conversion algorithm (Infix → Postfix)**\n1. Initialise an empty operator stack and an empty output list.\n2. Scan the infix token stream from left to right.\n   - If the token is an operand, append it to the output.\n   - If the token is a left parenthesis ‘(’, push it onto the stack.\n   - If the token is a right parenthesis ‘)’, pop operators from the stack and append them to the output until a left parenthesis is encountered; discard both parentheses.\n   - If the token is an operator (e.g., +, –, *, /):\n     * While the stack is not empty and the operator at the top has **higher or equal precedence** (and is left‑associative), pop it to the output.\n     * Push the current operator onto the stack.\n3. After the scan, pop any remaining operators on the stack to the output.\n4. The output list now contains the postfix expression.\n\n**Applying the algorithm to (A+B)*(C‑D)/E**\n- Tokens: ( A + B ) * ( C - D ) / E\n- Step‑by‑step stack / output:\n  1. '(' → push '('                → stack: (   output: \n  2. A   → output A                → stack: (   output: A\n  3. '+' → push '+' (precedence lower than '(') → stack: ( +   output: A\n  4. B   → output B                → stack: ( +   output: A B\n  5. ')' → pop '+' → output '+'; pop '(' → stack:   output: A B +\n  6. '*' → push '*'                → stack: *   output: A B +\n  7. '(' → push '('                → stack: * (   output: A B +\n  8. C   → output C                → stack: * (   output: A B + C\n  9. '-' → push '-'                → stack: * ( -   output: A B + C\n 10. D   → output D                → stack: * ( -   output: A B + C D\n 11. ')' → pop '-' → output '-'; pop '(' → stack: *   output: A B + C D -\n 12. '/' → while top '*' has higher/equal precedence, pop '*' → output '*'; push '/' → stack: /   output: A B + C D - *\n 13. E   → output E                → stack: /   output: A B + C D - * E\n 14. End of input → pop '/' → output '/'\n- **Resulting postfix:** `A B + C D - * E /`\n\n**Postfix evaluation with given values**\n- Replace operands: 2 3 + 8 5 - * 5 /\n- Use an evaluation stack:\n  1. push 2, push 3 → stack: 2 3\n  2. '+' → pop 3,2 → compute 5 → push 5 → stack: 5\n  3. push 8, push 5 → stack: 5 8 5\n  4. '-' → pop 5,8 → compute 3 → push 3 → stack: 5 3\n  5. '*' → pop 3,5 → compute 15 → push 15 → stack: 15\n  6. push 5 → stack: 15 5\n  7. '/' → pop 5,15 → compute 3 → push 3 → stack: 3\n- Final result = **3**.\n\n**Advantages of postfix evaluation**\n- **No need for parentheses**: Operator precedence is encoded in the order, eliminating the parsing complexity of infix.\n- **Single left‑to‑right pass**: Both conversion and evaluation can be performed in linear time O(n).\n- **Simple runtime algorithm**: Evaluation uses only a stack with push/pop operations; no recursive descent or precedence tables are required.\n- **Deterministic execution**: The order of operations is unambiguous, which is valuable for compiler code generation and calculators.\n\nOverall, postfix notation transforms the problem of handling precedence and associativity into a straightforward stack manipulation, leading to more efficient and easier‑to‑implement evaluators.",
+      "key_points": [
+        "Step‑by‑step description of the infix‑to‑postfix stack algorithm",
+        "Correct postfix expression and numeric evaluation yielding 3",
+        "Clear articulation of why postfix evaluation is advantageous over infix"
+      ],
+      "mark_breakdown": [
+        {
+          "criterion": "Step‑by‑step description of the infix‑to‑postfix conversion algorithm using a stack",
+          "marks": 4
+        },
+        {
+          "criterion": "Correct postfix expression, numeric evaluation with given values yielding the result 3",
+          "marks": 4
+        },
+        {
+          "criterion": "Discussion of advantages of postfix evaluation over direct infix evaluation",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

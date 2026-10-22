@@ -1,0 +1,356 @@
+DATA STRUCTURES
+UNIT-1
+Dr. SELVA KUMAR S
+PROFESSOR & Associate Head
+B.M.S. COLLEGE OF ENGINEERING
+
+INTRODUCTION
+• In computer science, a data structure is a data
+organization, management, and storage format that
+enables efficient access and modification.
+• Data structures serve as the basis for abstract data
+types (ADT). The ADT defines the logical form of the
+data type. The data structure implements the physical
+form of the data type.
+• Some examples of Data Structures are arrays, Linked
+List, Stack, Queue, etc. Data Structures are widely used
+in almost every aspect of Computer Science i.e.
+Operating System, Compiler Design, Artifical
+intelligence, Graphics and many more.
+
+Data structure classificaton
+
+Advantage of Data structures
+• Efficiency
+• Reusability
+• Abstraction
+
+Operations on Data Structures
+• Traversing
+• Insertion
+• Deletion
+• Searching
+• Sorting
+• Merging
+
+Basic concepts: Structures
+• WAP for the below given scenario:
+• A university wants to automate their admission process. Students
+are admitted based on the marks scored in a qualifying exam.
+• A student is identified by student id, age and marks in qualifying
+exam. Data are valid, if:
+• Age is greater than 20
+• Marks is between 0 and 100 (both inclusive)
+• A student qualifies for admission, if
+• Age and marks are valid and
+• Marks is 65 or more
+• Write a program to represent the students seeking admission in the
+university.
+
+Basic concepts: Pointers
+• WAP to swap two numbers using functions
+
+Basic concepts: Dynamic memory
+allocation
+
+Dynamic memory allocation
+• Dynamic Memory Allocation can be defined as a
+procedure in which the size of a data structure (like
+Array) is changed during the runtime.
+• C provides some functions to achieve these tasks.
+There are 4 library functions provided by C defined
+under <stdlib.h> header file to facilitate dynamic
+memory allocation in C programming. They are:
+• malloc()
+• calloc()
+• free()
+• realloc()
+
+Malloc()
+
+Calloc()
+
+Free()
+
+Realloc()
+
+Example
+
+Stack: Representation of stacks in C
+A stack is an Abstract Data Type (ADT), commonly used in most
+programming languages. It is named stack as it behaves like a real-world
+stack.
+A real-world stack allows operations at one end only. Stack ADT allows
+all data operations at one end only. At any given time, we can only
+access the top element of a stack.
+This feature makes it LIFO data structure. LIFO stands for Last-in-firstout. Here, the element which is placed (inserted or added) last, is
+accessed first.
+
+Stack Operations
+• Basic operations:
+• push() − Pushing (storing) an element on the stack.
+• pop() − Removing (accessing) an element from the
+stack.
+
+Stack Operations
+• To use a stack efficiently, we need to check the
+status of stack as well. For the same purpose,
+the following functionality is added to stacks:
+• top() − get the top data element of the stack,
+without removing it.
+• isFull() − check if stack is full.
+• isEmpty() − check if stack is empty.
+
+Applications
+• Function calls/Recursion
+• Undo operations/Editors
+• Balanced parentheses/ compiler
+• Backtracking
+
+Implementation of Stack
+• Implementation of a stack using
+– Arrays
+– Linked List
+
+Array Implementation
+• Pseudo code:
+
+Array Implementation
+
+Linked List Implementation
+• Will be discussed in the Linked List
+chapter/Unit.
+
+Example/application
+• Reverse a string
+
+Check for balanced parentheses
+
+Using Structure
+
+Using Structures and Pointers
+
+Infix, Prefix and Postfix
+• Infix, Postfix and Prefix notations are three
+different but equivalent ways of writing
+expressions.
+
+Advantage of Postfix Expression over
+Infix Expression
+• An infix expression is difficult for the machine to
+know and keep track of precedence of operators.
+On the other hand, a postfix expression itself
+determines the precedence of operators (as the
+placement of operators in a postfix expression
+depends upon its precedence).
+• Therefore, for the machine it is easier to carry out
+a postfix expression than an infix expression.
+
+Evaluate the postfix expression
+
+Example (Infix to Postfix)
+• Infix: A*B+C*D-E
+• AB*+C*D-E
+• AB*+CD*-E
+• AB*CD*+-E
+• Postfix:AB*CD*+E-
+•
+
+Postfix Evaluation
+
+Infix to Postfix Pseudo code
+• InfixtoPostfix(exp)
+• {
+• create a Strack S
+• for i<- 0 to lenght(exp)-1
+• {
+• if exp[i] is operand
+• res <- res + exp[i]
+• elseif exp[i] is operator
+• while(!S.empty() && HasHigerPre(S.top(), exp[i])
+• {
+• res<-res+s.top()
+• S.pop()
+• }
+• S.push(exp[i])
+• elseif IsOpeningParentheses(exp[i])
+• S.push(exp[i]
+• elseif IsClosingParentheses(exp[i])
+• {
+• while(!S.empty() && !IsOpeningParentheses(S.top()) && HasHigerPre(S.top(), exp[i]))
+• {
+• res <- res + S.top()
+• S.pop()
+• }
+• S.pop()
+• }
+• }
+• while(!S.empty())
+• {
+• res <- res+S.top()
+• S.pop()
+• }
+• return res
+• }
+
+Algorithm
+
+C Code
+
+Infix to Prefix
+• Algorithm used
+• Postfix
+• Step 1: Add '')" to the end of the infix expression
+• Step 2: Push(o nto the stack
+• Step 3: Repeat until each character in the infix notation is scanned
+– IF a(is encountered, push it on the stack
+– IF an operand (whetheradigit oracharacter) is encountered, add it postfix expression.
+– IF a ")" is encountered, then
+a. Repeatedly pop from stack and add it to the postfix expression until a "(" is encountered.
+b. Discard the "(".That is, remove the(from stack and do not add it to the postfix expression
+– IF an operator O is encountered, then
+a. Repeatedly pop from stack and add each operator ( popped from the stack) to the postfix expression which has the same
+precedence orahigher precedence than O
+b. Push the operator to the stack
+• [END OF IF]
+• Step 4: Repeatedly pop from the stack and add it to the postfix expression until the stack is empty
+• Step 5: EXIT
+• Prefix
+• Step 1: Reverse the infix string. Note that while reversing the string you must interchange left and right
+parentheses.
+• Step 2: Obtain the postfix expression of the infix expression Step 1.
+• Step 3: Reverse the postfix expression to get the prefix expression
+
+Recursion
+• The process in which a function calls itself
+directly or indirectly is called recursion and
+the corresponding function is called as
+recursive function.
+• Using recursive algorithm, certain problems
+can be solved quite easily.
+• Examples of such problems are Towers of
+Hanoi (TOH), Inorder/Preorder/Postorder Tree
+Traversals, DFS of Graph, etc.
+
+Types of Recursion
+• Direct recursion
+• Indirect recursion
+• Tail recursion
+• Head recursion
+
+Example
+void printFun(int test)
+{
+if (test < 1)
+return;
+else {
+printf(“%d”,test)
+printFun(test - 1); // statement 2
+printf(“%d”,test)
+return;
+}
+}
+int main()
+{
+int test = 3;
+printFun(test);
+}
+
+Example: Find a Factorial of n
+• factorial of n (n!) = 1 * 2 * 3 * 4 *... * n
+
+Example: Fibonacci series
+• 1 1 2 3 5 8 13 21 …. Fib(n) = Fib(n-1) + Fib(n-2)
+//Fibonacci Series using Recursion
+#include<stdio.h>
+int fib(int n)
+{
+if (n <= 1) // if(n==1 || n==2)
+return n; // return 1
+return fib(n-1) + fib(n-2);
+}
+int main ()
+{
+int n = 9;
+printf("%d", fib(n));
+getchar();
+return 0;
+}
+
+Example: Indirect Recursion
+• Print odd number to n+1 and even number to
+n-1 (if n=10, print 2,1,4,3,6,5,8,7,10,9)
+func odd(int n)
+{
+if (n<=10)
+{
+printf("%d",n+1);
+n++;
+even(n);
+}
+return;
+}
+func even(int n)
+{
+if (n<=10)
+{
+printf("%d",n-1);
+n++;
+odd(n);
+}
+return;
+}
+
+Example: Tower of Hanoi
+
+If n=1
+move disk from S to D
+n>1
+S1:move(n-1) disks from S to A using D
+S2: move disk from S to D
+S3: move(n-1) disks from A to D using S
+<-S1
+<-S2
+<-S3
+
+Towerofhanoi(n,s,a,d)
+{
+if(n==1)
+{ print “S ->D”
+return;
+}
+Towerofhanoi(n-1,s,d,a)
+printf “S->D”
+Towerofhanoi(n-1,a,s,d)
+}
+
+Trace the code
+int sum(int n)
+{
+if (n ==1)
+return 1;
+else
+return n+ sum(n-1);
+}
+
+Guess the output?
+int f(int k, int n)
+{
+if(n==k)
+return k;
+else
+if(n>k)
+return f(k, n-k);
+else
+return f(k-n, n)
+}
+
+How many times get() will be called
+before returned to main
+void get(int n)
+{
+if(n<1) return;
+get(n-1);
+get(n-3);
+printf(“%d”,n);
+}
