@@ -2,3 +2,12 @@
 .venv/
 __pycache__/
 *.pyc
+
+# Runtime files written by the pipeline
+outputs/checkpoints.db*
+outputs/.last_thread_id
+outputs/cleaned_*.txt
+
+# OS files
+.DS_Store
+*.textClipping
